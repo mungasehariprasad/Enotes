@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{base::layout(~{::title},~{::section})}"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>register page</title>
+    </head>
+    <body>
+        <section class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 offset-md-8">
+                        <div class="my-card mt-5 rounded mt-1">
+                            <h4 class="text-center text-dark">Register Here</h4>
+                            <th:block th:if="${session.msg}">
+                                <p class="fs-5 text-center text-success">
+                                    [[${session.msg}]]
+                                </p>
+                            </th:block>
+
+                            <th:block
+                                th:text="${@userServiceImpl.removeSessionMessage()}"
+                            ></th:block>
+                            <form action="saveUser" method="post">
+                                <!-- name field -->
+                                <div class="mb-3">
+                                    <label
+                                        for="name_field"
+                                        class="form-label text-dark"
+                                        >Name</label
+                                    >
+                                    <input
+                                        name="name"
+                                        type="text"
+                                        class="form-control"
+                                        id="name_field"
+                                        aria-describedby="emailHelp"
+                                        placeholder="Enter name"
+                                        required
+                                    />
+                                </div>
+
+                                <!-- email field -->
+                                <div class="mb-3">
+                                    <label
+                                        for="email_field"
+                                        class="form-label text-dark"
+                                        >Email</label
+                                    >
+                                    <input
+                                        name="email"
+                                        type="email"
+                                        class="form-control"
+                                        id="email_field"
+                                        aria-describedby="emailHelp"
+                                        placeholder="Enter Email"
+                                        required
+                                    />
+                                </div>
+                                <!-- Address -->
+                                <div class="mb-3">
+                                    <label class="form-label text-dark"
+                                        >Address</label
+                                    >
+                                    <input
+                                        name="address"
+                                        type="text"
+                                        class="form-control"
+                                        id="address_field"
+                                        placeholder="Enter Address"
+                                        required
+                                    />
+                                </div>
+
+                                <!-- \password field -->
+                                <div class="mb-3">
+                                    <label
+                                        for="password_field"
+                                        class="form-label text-dark"
+                                        >Password</label
+                                    >
+                                    <input
+                                        name="password"
+                                        type="password"
+                                        class="form-control"
+                                        id="password_field"
+                                        aria-describedby="emailHelp"
+                                        placeholder="Enter password"
+                                        required
+                                    />
+                                </div>
+                                <div class="md-3 text-dark">
+                                    <label>Gender</label>
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="gender"
+                                            id="inlineRadio1"
+                                            value="Male"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="inlineRadio1"
+                                            >Male</label
+                                        >
+                                    </div>
+                                    <div
+                                        class="form-check form-check-inline text-dark"
+                                    >
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="gender"
+                                            id="inlineRadio2"
+                                            value="Female"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="inlineRadio2"
+                                            >Female</label
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- User about filed -->
+                                <div class="form-group">
+                                    <textarea
+                                        placeholder="Enter something yourself"
+                                        rows="5"
+                                        class="form-control"
+                                        name="about"
+                                    ></textarea>
+                                </div>
+
+                                <!-- Terms and condition agreement -->
+                                <div class="form-group from-check text-dark">
+                                    <input
+                                        type="checkbox"
+                                        name="agreement"
+                                        id="agreement"
+                                        class="from-check-input"
+                                    />
+                                    <label for="agreement"
+                                        >Accep terms condition</label
+                                    >
+                                </div>
+
+                                <div class="container text-center mt-3">
+                                    <button
+                                        type="submit"
+                                        class="btn bg-primary text-white"
+                                    >
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

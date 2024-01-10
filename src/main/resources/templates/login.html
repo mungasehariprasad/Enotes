@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{base::layout(~{::title},~{::section})}"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>login page</title>
+    </head>
+    <body>
+        <section class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 offset-md-8">
+                        <div class="my-card mt-5 rounded mt-1">
+                            <h4 class="text-center text-dark">Login Here</h4>
+
+                            <th:block th:if="${param.error}">
+                                <p class="text-center text-danger fs-5">
+                                    [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+                                </p>
+                            </th:block>
+
+                            <th:block th:if="${param.logout}">
+                                <p class="text-center text-success fs-5">
+                                    Logout sucessfully
+                                </p>
+                            </th:block>
+
+                            <form action="userLogin" method="post">
+                                <!-- email field -->
+                                <div class="mb-3">
+                                    <label
+                                        for="email_field"
+                                        class="form-label text-dark"
+                                        >Email</label
+                                    >
+                                    <input
+                                        type="email"
+                                        name="username"
+                                        class="form-control"
+                                        placeholder="Enter Email"
+                                        required
+                                    />
+                                </div>
+
+                                <!-- \password field -->
+                                <div class="mb-3">
+                                    <label
+                                        for="password_field"
+                                        class="form-label text-dark"
+                                        >Password</label
+                                    >
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        class="form-control"
+                                        placeholder="Enter password"
+                                        required
+                                    />
+                                </div>
+
+                                <div class="container text-center mt-3">
+                                    <button
+                                        type="submit"
+                                        class="btn bg-primary text-white"
+                                    >
+                                        Login
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="text-center">
+                                <p class="fs-6 text-dark">
+                                    don't have an account
+                                    <a
+                                        href="/register"
+                                        class="text-decpration-none"
+                                        >register</a
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
